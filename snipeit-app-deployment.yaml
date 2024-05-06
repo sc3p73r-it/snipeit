@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: snipeit-app
+  name: snipeit-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snipeit-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: snipeit-app
+    spec:
+      containers:
+      - image: sc3p73r/snipeit:v1.0.1
+        name: snipeit
+        resources: 
+          limits:
+            memory: 512Mi
+            cpu: "1"
+          requests:
+            memory: 256Mi
+            cpu: "0.2"
+        ports:
+          - containerPort: 8000
+        env:
+        - name: DB_DATABASE
+          value: "snipeitdb"
+        - name: DB_USERNAME
+          value: "snipeituser"
+        - name: DB_PASSWORD
+          value: "p@ssw0rd"
+        - name: DB_CONNECTION
+          value: "mysql"
+        - name: DB_HOST
+          value: "snipeit-db"
+        - name: DB_PORT
+          value: "3306"
+        - name: APP_ENV
+          value: "production"
+        - name: APP_DEBUG
+          value: "false"
+        - name: APP_KEY
+          value: "base64:nPf73jh52RF5utf0SPUvZV6dpfbntFrD2LuRCKlrVtQ="
+        - name: APP_URL
+          value: "http://127.0.0.1:8000"
+        - name: APP_TIMEZONE
+          value: "Asia/Yangon"
+        - name: APP_LOCALE
+          value: "en"        

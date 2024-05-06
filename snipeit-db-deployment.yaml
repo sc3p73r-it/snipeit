@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  creationTimestamp: null
+  labels:
+    app: snipeit-db
+  name: snipeit-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snipeit-db
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: snipeit-db
+    spec:
+      containers:
+       - image: sc3p73r/snipe-mysql:v1.0.1
+         name: mysql-snipe
+         resources: 
+           limits:
+             memory: 512Mi
+             cpu: "1"
+           requests:
+             memory: 256Mi
+             cpu: "0.2"
+         ports:
+           - containerPort: 3306
+         env:
+           - name: MYSQL_ROOT_PASSWORD
+             value: "P@ssw0rd"
+           - name: MYSQL_DATABSE
+             value: "snipeitdb"
+           - name: MYSQL_USER
+             value: "snipeituser"
+           - name: MYSQL_PASSWORD
+             value: "p@ssw0rd"
+
