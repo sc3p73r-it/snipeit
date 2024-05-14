@@ -28,7 +28,7 @@ spec:
             memory: 256Mi
             cpu: "0.2"
         ports:
-          - containerPort: 8000
+          - containerPort: 80
         env:
         - name: DB_DATABASE
           value: "snipeitdb"
@@ -49,7 +49,7 @@ spec:
         - name: APP_KEY
           value: "base64:nPf73jh52RF5utf0SPUvZV6dpfbntFrD2LuRCKlrVtQ="
         - name: APP_URL
-          value: "http://127.0.0.1:8000"
+          value: "http://192.168.222.15"
         - name: APP_TIMEZONE
           value: "Asia/Yangon"
         - name: APP_LOCALE
