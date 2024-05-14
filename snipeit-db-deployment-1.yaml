@@ -23,7 +23,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   local:
-    path: /mnt/snipeit_data
+    path: /mnt/snipeit_db_data
   nodeAffinity:
     required:
       nodeSelectorTerms:

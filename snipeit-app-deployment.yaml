@@ -54,3 +54,10 @@ spec:
           value: "Asia/Yangon"
         - name: APP_LOCALE
           value: "en"        
+        volumeMounts:
+        - name: app-data
+          mountPath: /var/www/snipe-it
+      volumes:
+      - name: app-data
+        persistentVolumeClaim:
+         claimName: snipeit-pv-claim
